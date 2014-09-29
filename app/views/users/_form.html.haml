@@ -1,0 +1,33 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    =f.label :username
+    =f.text_field :username, {required: ""}
+
+  .field
+    = f.label :name
+    = f.text_field :name, {required: ""}
+
+  .field
+    = f.label :email
+    = f.text_field :email, {required: ""}
+
+  .field
+    = f.label :password
+    = f.password_field :password, {required: ""}
+
+
+  -if user_admin?(current_user)
+    %h3 Admin Options
+
+    .field
+      = f.label :role
+      = select_tag "user[role]", options_for_select(["user","admin"],@user.role)
+
+  .actions
+    = f.submit 'Save'

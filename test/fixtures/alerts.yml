@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fromUserID: 1
+  toUserID: 1
+  state: 1
+
+two:
+  fromUserID: 1
+  toUserID: 1
+  state: 1

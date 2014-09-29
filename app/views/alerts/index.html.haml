@@ -1,0 +1,17 @@
+%h1 Listing alerts
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @alerts.each do |alert|
+    %tr
+      %td= link_to 'Show', alert
+      %td= link_to 'Edit', edit_alert_path(alert)
+      %td= link_to 'Destroy', alert, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Alert', new_alert_path
