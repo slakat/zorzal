@@ -9,8 +9,8 @@ class CreateContacts < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :contacts, :contact_id
-    add_index :contacts, :user_id
+    add_reference :users, :contact_id, index: true
+    add_reference :users, :user_id, index: true
 
   end
 end

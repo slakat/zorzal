@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :users, :defaults => { :format => 'json' }
-    get "/push", to: "users#push_notification", as: :push
+    get "/push", :defaults =>{:format => 'json'}, to: "users#push_notification", as: :push
   end
 
 

@@ -99,17 +99,17 @@ module Api
       #GCM.send_notification( destination )
       # Empty notification
 
-      GCM.send_notification( destination, data )
+      #GCM.send_notification( destination, data )
       # Notification with custom information
 
-      response=GCM.send_notification( destination, data, :collapse_key => "placar_score_global", :time_to_live => 3600, :delay_while_idle => false )
+      response=GCM.send_notification( destination, data, :collapse_key => "placar_score_global", :time_to_live => 0, :delay_while_idle => false )
       # Notification with custom information and parameters=end
 
 
-       #flash.now.alert = response
-        respond_to do |format|
+      #flash.now.alert = response
+      respond_to do |format|
         format.json { render json: response }
-        format.xml { render xml: response }
+        #format.xml { render xml: response }
       end
     end
 

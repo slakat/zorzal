@@ -21,20 +21,15 @@ ActiveRecord::Schema.define(version: 20140929202129) do
     t.datetime "updated_at"
   end
 
-  add_index "alerts", ["fromUserID"], name: "index_alerts_on_fromUserID"
-  add_index "alerts", ["toUserID"], name: "index_alerts_on_toUserID"
-
   create_table "contacts", force: true do |t|
-    t.integer  "contact_id"
     t.string   "keyword"
     t.string   "nick"
-    t.integer  "user_id"
+    t.integer  "Users_id"
+    t.integer  "contact_id_id"
+    t.integer  "user_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "contacts", ["contact_id"], name: "index_contacts_on_contact_id"
-  add_index "contacts", ["user_id"], name: "index_contacts_on_user_id"
 
   create_table "devices", force: true do |t|
     t.string   "regID"
@@ -51,6 +46,11 @@ ActiveRecord::Schema.define(version: 20140929202129) do
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "fromUserID_id"
+    t.integer  "toUserID_id"
   end
+
+  add_index "users", ["fromUserID_id"], name: "index_users_on_fromUserID_id"
+  add_index "users", ["toUserID_id"], name: "index_users_on_toUserID_id"
 
 end

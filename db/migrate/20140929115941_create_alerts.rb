@@ -8,8 +8,8 @@ class CreateAlerts < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :alerts, :fromUserID
-    add_index :alerts, :toUserID
+    add_reference :users, :fromUserID, index: true
+    add_reference :users, :toUserID, index: true
 
   end
 end
