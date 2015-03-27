@@ -90,7 +90,9 @@ module Api
       GCM.key = "AIzaSyButI8OVdmH6r1ZR5lmIo4kS4mRWFlWH4E"
       # this is the apiKey obtained from here https://code.google.com/apis/console/
 
-      destination = "APA91bHPbWQH75aI1YStVQjZQYeVpluGC4U2vsBbuiFl97p7lhFhg4t9_NG0Zhf6UYvf6JTpnKX8UbHyIljlvYBjXspjwHgHEH_eeyP53Iqx4Y1EQAYbClOHOU8DChbjo7_1Gbt3B-vjGR8u6A7rjz1G73ibuEPUXOqHnXYzIjBVFzrbi0xAPnI"
+      #destination = "APA91bHPbWQH75aI1YStVQjZQYeVpluGC4U2vsBbuiFl97p7lhFhg4t9_NG0Zhf6UYvf6JTpnKX8UbHyIljlvYBjXspjwHgHEH_eeyP53Iqx4Y1EQAYbClOHOU8DChbjo7_1Gbt3B-vjGR8u6A7rjz1G73ibuEPUXOqHnXYzIjBVFzrbi0xAPnI"
+      destination = "APA91bF9a9p41waFsiFTX-haqA0TVlLELJujIFR54KdHe5RzvYyJSlFuSeku6tiJdPgDiypfIrplUs5S-e80Qrk89ep8KWZ4vUVMiHWkgXaD_BQHWoFrhnH-kqtBMvz7CQoxTLIFQrKk-5oVuQkeLXARJDa61GhVU4CxrODxyfsgRvcYM9mznzI
+"
       # can be an string or an array of strings containing the regIds of the devices you want to send
 
       data = {:key => "LALALA", :key2 => ["My anaconda don't", "de kathy"]}
