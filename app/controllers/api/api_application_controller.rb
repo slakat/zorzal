@@ -3,6 +3,7 @@ module Api
    	skip_before_filter :user_admin
     skip_before_filter :authorize
 
+
     respond_to :json
 
 	private
