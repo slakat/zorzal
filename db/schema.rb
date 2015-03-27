@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140929202129) do
   end
 
   create_table "devices", force: true do |t|
-    t.string   "regID"
+    t.string   "reg_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
