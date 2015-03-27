@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,8 +12,13 @@ import android.widget.TextView;
 
 import com.zorzal.heartstrings.R;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.xml.sax.InputSource;
 
+import java.io.InputStream;
 import java.net.URL;
 
 
@@ -85,7 +91,17 @@ public class DetailsCalloutContactActivity extends ActionBarActivity {
 
         protected Void doInBackground(String ...query) {
             try {
-                URL url= new URL("http://zorzal.herokuapp.com/api/push/" + query[0]);
+                URL url= new URL("http://zorzal.herokuapp.com/api/push");
+                Log.i("Zorzal - url", url.toString());
+                InputStream content = null;
+                try {
+                    HttpClient httpclient = new DefaultHttpClient();
+                    HttpResponse response = httpclient.execute(new HttpGet(url.toString()));
+                    content = response.getEntity().getContent();
+                } catch (Exception e) {
+                    Log.i("[GET REQUEST]", "Network exception", e);
+                }
+
                 /*SAXParserFactory factory =SAXParserFactory.newInstance();
                 SAXParser parser=factory.newSAXParser();
                 XMLReader xmlreader=parser.getXMLReader();
