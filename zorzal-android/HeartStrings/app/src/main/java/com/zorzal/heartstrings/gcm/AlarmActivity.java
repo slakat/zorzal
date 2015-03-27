@@ -32,7 +32,7 @@ public class AlarmActivity extends ActionBarActivity implements MediaPlayer.OnPr
         player = new MediaPlayer();
         player.setAudioStreamType(AudioManager.STREAM_ALARM);
         try{
-            AssetFileDescriptor afd = getAssets().openFd("alarm.m4r");
+            AssetFileDescriptor afd = getAssets().openFd("alarm.mp3");
             player.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
             player.setOnPreparedListener(this);
             player.setLooping(true);

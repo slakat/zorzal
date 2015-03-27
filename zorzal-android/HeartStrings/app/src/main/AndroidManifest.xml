@@ -97,10 +97,10 @@
             android:name=".BlankActivity"
             android:label="@string/title_activity_blank" >
         </activity>
-        <activity
-            android:name=".account.RegisterActivity"
-            android:label="@string/title_activity_register" >
-        </activity>
+        <activity android:name=".account.RegisterActivity"
+            android:label="Register New Account">
+
+            </activity>
     </application>
 
 </manifest>

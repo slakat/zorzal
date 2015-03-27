@@ -16,6 +16,7 @@ import android.view.View;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.zorzal.heartstrings.account.RegisterActivity;
 import com.zorzal.heartstrings.contacts.ContactsActivity;
 
 import java.io.IOException;
@@ -112,9 +113,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    public void viewRegister(final View view){
 
-    }
 
     /**
      * Gets the current registration ID for application on GCM service.
