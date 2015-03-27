@@ -50,6 +50,7 @@ public class MainActivity extends ActionBarActivity {
         if (checkPlayServices()) {
             gcm = GoogleCloudMessaging.getInstance(this);
             regid = getRegistrationId(context);
+            System.out.print(regid);
 
             if (regid.isEmpty()) {
                 registerInBackground();
@@ -110,6 +111,11 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+
+    public void viewRegister(final View view){
+
+    }
+
     /**
      * Gets the current registration ID for application on GCM service.
      * <p>
@@ -121,6 +127,7 @@ public class MainActivity extends ActionBarActivity {
     private String getRegistrationId(Context context) {
         final SharedPreferences prefs = getGCMPreferences(context);
         String registrationId = prefs.getString(PROPERTY_REG_ID, "");
+        Log.i(TAG,registrationId);
         if (registrationId.isEmpty()) {
             Log.i(TAG, "Registration not found.");
             return "";
