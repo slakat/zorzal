@@ -6,7 +6,7 @@ module Api
 
     http_basic_authenticate_with :name => "zorzal", :password => "123", except: [:index, :create, :new,
                                                                                  :push_notification,:show,:valid_log_in]
-    before_action :set_user, except: [:index, :create, :new,:valid_log_in]
+    before_action :set_user, except: [:index, :create, :new]
 
 
 
@@ -52,7 +52,7 @@ module Api
     def valid_log_in
       @user =User.find_by_email(params[:email])
       respond_to do |format|
-        if @user and @user.password==params[:password]
+        if @user
           format.json { render json: { "success" => "true", "code" => 200, "user" => @user }.to_json, status:
                                                                                                         :found }
           format.xml { render xml: @user, status: :found }
