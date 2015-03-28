@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users, :defaults => { :format => 'json' }
     get "/push", :defaults =>{:format => 'json'}, to: "users#push_notification", as: :push
+    get "/login", :defaults =>{:format => 'json'}, to: "users#valid_log_in", as: :login
   end
 
 

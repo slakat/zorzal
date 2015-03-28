@@ -4,8 +4,9 @@ module Api
     #before_filter :token_admin, only: [:create, :update, :destroy]
     #before_filter :token_user, only: [:add, :remove, :watch, :unwatch, :seen, :unseen]
 
-    http_basic_authenticate_with :name => "zorzal", :password => "123", except: [:index, :create, :new, :push_notification]
-    before_action :set_user, except: [:index, :create, :new]
+    http_basic_authenticate_with :name => "zorzal", :password => "123", except: [:index, :create, :new,
+                                                                                 :push_notification,:show,:valid_log_in]
+    before_action :set_user, except: [:index, :create, :new,:valid_log_in]
 
 
 
@@ -47,6 +48,21 @@ module Api
       end
     end
   end
+
+    def valid_log_in
+      @user =User.find_by_email(params[:email])
+      respond_to do |format|
+        if @user and @user.password==params[:password]
+          format.json { render json: { "success" => "true", "code" => 200, "user" => @user }.to_json, status:
+                                                                                                        :found }
+          format.xml { render xml: @user, status: :found }
+        else
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+          format.xml { render xml: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
 
   def update
     respond_to do |format|
