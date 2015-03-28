@@ -93,7 +93,8 @@ public class DetailsCalloutContactActivity extends ActionBarActivity {
 
         protected Void doInBackground(String ...query) {
             try {
-                URL url= new URL("http://zorzal.herokuapp.com/api/push");
+
+                URL url= new URL("http://zorzal.herokuapp.com/api/push?email="+ mMailDisplay.getText());
                 Log.i("Zorzal - url", url.toString());
                 InputStream content = null;
                 try {

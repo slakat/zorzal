@@ -1,16 +1,14 @@
 package com.zorzal.heartstrings.contacts;
 
-import java.util.Locale;
-
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.zorzal.heartstrings.R;
+
+import java.util.Locale;
 
 
 public class ContactsActivity extends ActionBarActivity implements ActionBar.TabListener, CalloutListFragment.OnCalloutContactClickListener, CallinListFragment.OnCallinContactClickListener {
@@ -41,6 +41,7 @@ public class ContactsActivity extends ActionBarActivity implements ActionBar.Tab
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
+        Contacts.update();
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();

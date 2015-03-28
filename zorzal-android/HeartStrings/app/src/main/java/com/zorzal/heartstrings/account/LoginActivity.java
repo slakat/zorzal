@@ -104,7 +104,7 @@ public class LoginActivity extends Activity{
                 //Log.i("Zorzal - response", json.toString());
                 //Log.i("Zorzal - code",jsonstr);
 
-                URL url= new URL("http://zorzal.herokuapp.com/api/login?email="+emailtxt+"&password"+passwordtxt);
+                URL url= new URL("http://zorzal.herokuapp.com/api/login?email="+emailtxt);
                 Log.i("Zorzal - url", url.toString());
                 InputStream content = null;
                 HttpResponse response=null;

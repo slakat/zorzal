@@ -20,11 +20,18 @@ import android.widget.Toast;
 import com.zorzal.heartstrings.MainActivity;
 import com.zorzal.heartstrings.R;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -116,7 +123,26 @@ public class SignupActivity extends Activity{
 
                 }
 
-                JSONObject json = sr.getJSON("http://zorzal.herokuapp.com/api/users",params);
+                //JSONObject json = sr.getJSON("http://zorzal.herokuapp.com/api/users",params);
+
+                URL url= new URL("http://zorzal.herokuapp.com/api/users");
+                Log.i("Zorzal - url", url.toString());
+                HttpResponse response=null;
+                try {
+                    HttpClient httpclient = new DefaultHttpClient();
+                    HttpPost post = new HttpPost(url.toString());
+                    post.setEntity(new UrlEncodedFormEntity(params));
+                    response = httpclient.execute(post);
+                } catch (Exception e) {
+                    Log.i("[GET REQUEST]", "Network exception", e);
+                }
+
+
+                String json_string = EntityUtils.toString(response.getEntity());
+                int statusCode = response.getStatusLine().getStatusCode();
+                Log.i("STATUS", String.valueOf(statusCode));
+                JSONObject json = new JSONObject(json_string);
+
                 if(json != null){
                     try{
                         String jsonstr = json.getString("code");
