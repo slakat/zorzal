@@ -53,7 +53,7 @@ module Api
       @user =User.find_by_email(params[:email])
       respond_to do |format|
         if @user
-          format.json { render json: { "success" => "true", "code" => 200, "user" => @user }.to_json, status:
+          format.json { render json: @user, status:
                                                                                                         :found }
           format.xml { render xml: @user, status: :found }
         else
