@@ -6,8 +6,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +16,9 @@ import android.view.View;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.zorzal.heartstrings.contacts.ContactsActivity;
+import com.zorzal.heartstrings.account.LoginActivity;
+import com.zorzal.heartstrings.account.SignupActivity;
+import com.zorzal.heartstrings.account.Welcome;
 
 import java.io.IOException;
 
@@ -42,6 +44,17 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final SharedPreferences prefs = getGCMPreferences(context);
+        int i = prefs.getInt("user_logged", 0);
+        Log.i("login",String.valueOf(i));
+        if (prefs.getInt("user_logged", 0) == 1){
+            Log.i("log", "yes");
+            Intent intent = new Intent(MainActivity.this, Welcome.class);
+            startActivity(intent);
+            finish();
+        }
+
         setContentView(R.layout.activity_main);
 
         context = getApplicationContext();
@@ -57,6 +70,7 @@ public class MainActivity extends ActionBarActivity {
         } else {
             Log.i(TAG, "No valid Google Play Services APK found.");
         }
+
     }
 
     // You need to do the Play Services APK check here too.
@@ -105,8 +119,13 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void viewContacts(final View view) {
-        Intent intent = new Intent(this, ContactsActivity.class);
+    public void viewLogin(final View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewSignup(final View view) {
+        Intent intent = new Intent(this, SignupActivity.class);
         startActivity(intent);
     }
 
@@ -121,6 +140,7 @@ public class MainActivity extends ActionBarActivity {
     private String getRegistrationId(Context context) {
         final SharedPreferences prefs = getGCMPreferences(context);
         String registrationId = prefs.getString(PROPERTY_REG_ID, "");
+        Log.i(TAG,registrationId);
         if (registrationId.isEmpty()) {
             Log.i(TAG, "Registration not found.");
             return "";
@@ -178,6 +198,10 @@ public class MainActivity extends ActionBarActivity {
         editor.putString(PROPERTY_REG_ID, regId);
         editor.putInt(PROPERTY_APP_VERSION, appVersion);
         editor.commit();
+
+        String restoredText = prefs.getString(PROPERTY_REG_ID, "");
+        Log.i("COSAAA", restoredText);
+
     }
 
     /**

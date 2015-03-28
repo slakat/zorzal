@@ -69,7 +69,7 @@
             android:parentActivityName=".contacts.ContactsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zorzal.heartstrings.ContactsActivity" />
+                android:value="com.zorzal.heartstrings.contacts.ContactsActivity" />
         </activity>
         <activity
             android:name=".contacts.DetailsCallinContactActivity"
@@ -77,7 +77,7 @@
             android:parentActivityName=".contacts.ContactsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zorzal.heartstrings.ContactsActivity" />
+                android:value="com.zorzal.heartstrings.contacts.ContactsActivity" />
         </activity>
         <activity
             android:name=".gcm.AlarmActivity"
@@ -90,6 +90,30 @@
         <activity
             android:name=".BlankActivity"
             android:label="@string/title_activity_blank" >
+        </activity>
+        <activity
+            android:name=".account.SignupActivity"
+            android:label="@string/action_sign_in"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zorzal.heartstrings.MainActivity" />
+        </activity>
+        <activity
+            android:name=".account.Welcome"
+            android:label="welcome"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zorzal.heartstrings.MainActivity" />
+        </activity>
+        <activity
+            android:name=".account.LoginActivity"
+            android:label="Login"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zorzal.heartstrings.MainActivity" />
         </activity>
     </application>
 

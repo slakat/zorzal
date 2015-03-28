@@ -2,8 +2,8 @@ package com.zorzal.heartstrings.contacts;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,24 +14,17 @@ import android.widget.Toast;
 import com.zorzal.heartstrings.R;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xml.sax.InputSource;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.zorzal.heartstrings.account.ServerRequest;
 
 
 public class DetailsCalloutContactActivity extends ActionBarActivity {
+    private static final String PROPERTY_REG_ID = "registration_id";
+
 
     TextView mNickDisplay;
     TextView mUserDisplay;
@@ -100,7 +93,7 @@ public class DetailsCalloutContactActivity extends ActionBarActivity {
 
         protected Void doInBackground(String ...query) {
             try {
-                /*URL url= new URL("http://zorzal.herokuapp.com/api/push");
+                URL url= new URL("http://zorzal.herokuapp.com/api/push");
                 Log.i("Zorzal - url", url.toString());
                 InputStream content = null;
                 try {
@@ -109,28 +102,18 @@ public class DetailsCalloutContactActivity extends ActionBarActivity {
                     content = response.getEntity().getContent();
                 } catch (Exception e) {
                     Log.i("[GET REQUEST]", "Network exception", e);
-                }*/
-
-                ServerRequest sr = new ServerRequest();
+                }
 
 
-                ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("user[email]", "slakat@example.com"));
-                params.add(new BasicNameValuePair("user[password]", "12345678"));
-                params.add(new BasicNameValuePair("user[name]", "Katherine"));
-                params.add(new BasicNameValuePair("user[username]", "slakaty"));
 
-                JSONObject json = sr.getJSON("http://zorzal.herokuapp.com/api/users",params);
                 Log.i("Zorzal - luck","despues");
-                if(json != null){
+                if(content != null){
                     try{
-                        String jsonstr = json.getString("response");
-                        Log.i("Zorzal - response",jsonstr);
-                        Log.i("Zorzal","hola");
+
 
                         finish();
-                        Toast.makeText(getApplication(), jsonstr, Toast.LENGTH_LONG).show();
-                    }catch (JSONException e) {
+                        Toast.makeText(getApplication(), "error", Toast.LENGTH_LONG).show();
+                    }catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
