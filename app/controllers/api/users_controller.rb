@@ -99,6 +99,8 @@ module Api
     end
 
     def push_notification
+      @user = User.find_by_email(params[:email])
+      destination = Device.find_by_user_id(@user.id).reg_id
       GCM.host = 'https://android.googleapis.com/gcm/send'
       # https://android.googleapis.com/gcm/send is default
 
@@ -110,7 +112,7 @@ module Api
 
       #Ariel destination = "APA91bHPbWQH75aI1YStVQjZQYeVpluGC4U2vsBbuiFl97p7lhFhg4t9_NG0Zhf6UYvf6JTpnKX8UbHyIljlvYBjXspjwHgHEH_eeyP53Iqx4Y1EQAYbClOHOU8DChbjo7_1Gbt3B-vjGR8u6A7rjz1G73ibuEPUXOqHnXYzIjBVFzrbi0xAPnI"
       #kathy
-      destination = "APA91bF9a9p41waFsiFTX-haqA0TVlLELJujIFR54KdHe5RzvYyJSlFuSeku6tiJdPgDiypfIrplUs5S-e80Qrk89ep8KWZ4vUVMiHWkgXaD_BQHWoFrhnH-kqtBMvz7CQoxTLIFQrKk-5oVuQkeLXARJDa61GhVU4CxrODxyfsgRvcYM9mznzI"
+      #destination = "APA91bF9a9p41waFsiFTX-haqA0TVlLELJujIFR54KdHe5RzvYyJSlFuSeku6tiJdPgDiypfIrplUs5S-e80Qrk89ep8KWZ4vUVMiHWkgXaD_BQHWoFrhnH-kqtBMvz7CQoxTLIFQrKk-5oVuQkeLXARJDa61GhVU4CxrODxyfsgRvcYM9mznzI"
 
       #mama
       #destination = "APA91bEYNWxwEh4RuEwhnrIvgLE0iUv3LUZOfcdSjlw3nAJKtyKEqPGBbkBy3cSrRkA_iZM1yVIj2ZfrI2qD59vn9Ag6AYbCZtBR0sP5uWLETIbWhFIfpBg3gxO77Z7vDzbhtWhRVkk0mt31o-Bp9QFx38ejDvT88w"
