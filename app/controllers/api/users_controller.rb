@@ -38,7 +38,8 @@ module Api
       if @user.save
         device = Device.new(reg_id: params[:reg_id], user_id: @user.id)
         device.save
-        format.json { render json: '200', status: :created }
+        format.json { render json: { "results" => "success", "code" => 200, "user" => @user }.to_json, status:
+                                                                                                         :created }
         format.xml { render xml: @user, status: :created }
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }
