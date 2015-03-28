@@ -36,7 +36,9 @@ module Api
     @user.role = "user"
     respond_to do |format|
       if @user.save
-        format.json { render json: @user, status: :created }
+        device = Device.new(reg_id: params[reg_id], user_id: @user.id)
+        device.save
+        format.json { render json: '200', status: :created }
         format.xml { render xml: @user, status: :created }
       else
         format.json { render json: @user.errors, status: :unprocessable_entity }
