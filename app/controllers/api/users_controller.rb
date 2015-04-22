@@ -99,8 +99,8 @@ module Api
     end
 
     def push_notification
-      @user = User.find_by_email(params[:email])
-      destination = Device.find_by_user_id(@user.id).reg_id
+      #@user = User.find_by_email(params[:email])
+      #destination = Device.find_by_user_id(@user.id).reg_id
       GCM.host = 'https://android.googleapis.com/gcm/send'
       # https://android.googleapis.com/gcm/send is default
 
@@ -115,7 +115,7 @@ module Api
       #destination = "APA91bF9a9p41waFsiFTX-haqA0TVlLELJujIFR54KdHe5RzvYyJSlFuSeku6tiJdPgDiypfIrplUs5S-e80Qrk89ep8KWZ4vUVMiHWkgXaD_BQHWoFrhnH-kqtBMvz7CQoxTLIFQrKk-5oVuQkeLXARJDa61GhVU4CxrODxyfsgRvcYM9mznzI"
 
       #mama
-      #destination = "APA91bEYNWxwEh4RuEwhnrIvgLE0iUv3LUZOfcdSjlw3nAJKtyKEqPGBbkBy3cSrRkA_iZM1yVIj2ZfrI2qD59vn9Ag6AYbCZtBR0sP5uWLETIbWhFIfpBg3gxO77Z7vDzbhtWhRVkk0mt31o-Bp9QFx38ejDvT88w"
+      destination = "APA91bEYNWxwEh4RuEwhnrIvgLE0iUv3LUZOfcdSjlw3nAJKtyKEqPGBbkBy3cSrRkA_iZM1yVIj2ZfrI2qD59vn9Ag6AYbCZtBR0sP5uWLETIbWhFIfpBg3gxO77Z7vDzbhtWhRVkk0mt31o-Bp9QFx38ejDvT88w"
       # can be an string or an array of strings containing the regIds of the devices you want to send
 
       data = {:key => "LALALA", :key2 => ["My anaconda don't", "de kathy"]}
